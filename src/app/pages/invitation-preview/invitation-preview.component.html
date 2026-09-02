@@ -1,0 +1,194 @@
+<div class="preview-page">
+
+  <!-- Décorations -->
+
+  <div class="floating-heart heart-1">♡</div>
+  <div class="floating-heart heart-2">♥</div>
+  <div class="floating-heart heart-3">♡</div>
+  <div class="floating-heart heart-4">✦</div>
+
+
+  <main class="preview-container">
+
+    <!-- Petit texte -->
+
+    <div class="preview-label">
+      <span>✦</span>
+      TON INVITATION EST PRESQUE PRÊTE
+      <span>✦</span>
+    </div>
+
+
+    <!-- Carte -->
+
+    <div
+      class="invitation-card"
+      *ngIf="invitation"
+    >
+
+      <div class="card-decoration top">
+        ♡
+      </div>
+
+
+      <div class="card-content">
+
+        <p class="eyebrow">
+          UNE PETITE QUESTION POUR
+        </p>
+
+
+        <h1>
+          {{ invitation.recipientName }}
+          <span>❤️</span>
+        </h1>
+
+
+        <div class="ornament">
+          <span></span>
+          ♡
+          <span></span>
+        </div>
+
+
+        <p class="message">
+          {{ invitation.message }}
+        </p>
+
+
+        <div class="details">
+
+          <div class="detail">
+
+            <div class="detail-icon">
+              ✦
+            </div>
+
+            <div>
+              <span class="detail-label">
+                NOTRE MOMENT
+              </span>
+
+              <strong>
+                {{ invitation.activity }}
+              </strong>
+            </div>
+
+          </div>
+
+
+          <div class="detail">
+
+            <div class="detail-icon">
+              ♡
+            </div>
+
+            <div>
+              <span class="detail-label">
+                OÙ ?
+              </span>
+
+              <strong>
+                {{ invitation.location }}
+              </strong>
+            </div>
+
+          </div>
+
+
+          <div class="detail">
+
+            <div class="detail-icon">
+              ✧
+            </div>
+
+            <div>
+              <span class="detail-label">
+                QUAND ?
+              </span>
+
+              <strong>
+                {{ invitation.date | date:'EEEE d MMMM yyyy' }}
+              </strong>
+            </div>
+
+          </div>
+
+
+          <div class="detail">
+
+            <div class="detail-icon">
+              ♡
+            </div>
+
+            <div>
+
+              <span class="detail-label">
+                LES HORAIRES
+              </span>
+
+              <strong class="times">
+
+                <span>
+                  {{ invitation.time1 }}
+                </span>
+
+                <span *ngIf="invitation.time2">
+                  {{ invitation.time2 }}
+                </span>
+
+                <span *ngIf="invitation.time3">
+                  {{ invitation.time3 }}
+                </span>
+
+              </strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <p class="from">
+          Une invitation de
+          <strong>{{ invitation.creatorName }}</strong>
+        </p>
+
+      </div>
+
+
+      <div class="card-decoration bottom">
+        ♡
+      </div>
+
+    </div>
+
+
+    <!-- Actions -->
+
+    <div class="actions">
+
+      <button
+        type="button"
+        class="edit-button"
+        (click)="editInvitation()"
+      >
+        ← Modifier
+      </button>
+
+
+      <button
+        type="button"
+        class="create-link-button"
+        (click)="createLink()"
+      >
+        Créer mon lien
+        <span>♡</span>
+      </button>
+
+    </div>
+
+
+  </main>
+
+</div>

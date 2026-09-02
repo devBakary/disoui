@@ -1,0 +1,1125 @@
+<div class="response-page">
+
+  <!-- =====================================================
+       DÉCORATIONS
+  ====================================================== -->
+
+  <div class="floating-heart heart-1">♡</div>
+  <div class="floating-heart heart-2">♥</div>
+  <div class="floating-heart heart-3">♡</div>
+  <div class="floating-heart heart-4">✦</div>
+
+
+  <!-- =====================================================
+       INVITATION — RÉPONSE PAS ENCORE ENVOYÉE
+  ====================================================== -->
+
+  <main
+    class="response-container"
+    *ngIf="invitation && !responseAlreadySent"
+  >
+
+
+    <!-- =================================================
+         INDICATEUR DES ÉTAPES
+    ================================================== -->
+
+    <div class="steps">
+
+      <!-- ÉTAPE 1 -->
+
+      <div
+        class="step"
+        [class.active]="currentStep === 1"
+        [class.completed]="currentStep > 1"
+      >
+
+        <span>1</span>
+
+        <small>
+          Question
+        </small>
+
+      </div>
+
+
+      <div
+        class="line"
+        [class.active]="currentStep > 1"
+      ></div>
+
+
+      <!-- ÉTAPE 2 -->
+
+      <div
+        class="step"
+        [class.active]="currentStep === 2"
+        [class.completed]="currentStep > 2"
+      >
+
+        <span>2</span>
+
+        <small>
+          Proposition
+        </small>
+
+      </div>
+
+
+      <div
+        class="line"
+        [class.active]="currentStep > 2"
+      ></div>
+
+
+      <!-- ÉTAPE 3 -->
+
+      <div
+        class="step"
+        [class.active]="currentStep === 3"
+        [class.completed]="currentStep > 3"
+      >
+
+        <span>3</span>
+
+        <small>
+          Quand ?
+        </small>
+
+      </div>
+
+
+      <div
+        class="line"
+        [class.active]="currentStep > 3"
+      ></div>
+
+
+      <!-- ÉTAPE 4 -->
+
+      <div
+        class="step"
+        [class.active]="currentStep === 4"
+      >
+
+        <span>4</span>
+
+        <small>
+          Terminé
+        </small>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         CARTE PRINCIPALE
+    ================================================== -->
+
+    <div class="response-card">
+
+
+      <!-- =================================================
+           ÉTAPE 1 — QUESTION
+      ================================================== -->
+
+      <section
+        class="step-content question-step"
+        *ngIf="currentStep === 1"
+      >
+
+        <div class="big-heart">
+          ❤️
+        </div>
+
+
+        <p class="eyebrow">
+          J'AI UNE PETITE QUESTION POUR TOI
+        </p>
+
+
+        <h1>
+          {{ invitation.recipientName }}
+        </h1>
+
+
+        <div class="ornament">
+
+          <span></span>
+
+          ♡
+
+          <span></span>
+
+        </div>
+
+
+        <p class="question-intro">
+          J'ai quelque chose à te proposer...
+        </p>
+
+
+        <h2 class="main-question">
+
+          Est-ce que tu veux<br>
+          faire un date avec moi ?
+
+        </h2>
+
+
+        <p class="question-subtitle">
+          ❤️
+        </p>
+
+
+        <div class="response-actions">
+
+          <!-- OUI -->
+
+          <button
+            type="button"
+            class="yes-button"
+            (click)="chooseYes()"
+          >
+
+            Oui, avec plaisir
+
+            <span>
+              ❤️
+            </span>
+
+          </button>
+
+
+          <!-- NON -->
+
+          <button
+            type="button"
+            class="no-button"
+            (click)="chooseNo()"
+          >
+
+            Je préfère pas
+
+          </button>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- =================================================
+           ÉTAPE 2 — PROPOSITION
+      ================================================== -->
+
+      <section
+        class="step-content"
+        *ngIf="currentStep === 2"
+      >
+
+        <p class="eyebrow">
+          ALORS LAISSE-MOI TE PROPOSER QUELQUE CHOSE
+        </p>
+
+
+        <div class="small-heart">
+          💌
+        </div>
+
+
+        <h2 class="step-title">
+
+          J'ai pensé à<br>
+          quelque chose de spécial.
+
+        </h2>
+
+
+        <p class="proposal-message">
+
+          {{ invitation.message }}
+
+        </p>
+
+
+        <!-- =================================================
+             ACTIVITÉ
+        ================================================== -->
+
+        <div class="proposal-card">
+
+          <div class="proposal-icon">
+            ✦
+          </div>
+
+          <div class="proposal-content">
+
+            <span>
+              NOTRE MOMENT
+            </span>
+
+            <strong>
+              {{ invitation.activity }}
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             LIEU
+        ================================================== -->
+
+        <div class="proposal-card">
+
+          <div class="proposal-icon">
+            ♡
+          </div>
+
+          <div class="proposal-content">
+
+            <span>
+              NOTRE PETIT COIN
+            </span>
+
+            <strong>
+              {{ invitation.location }}
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <!-- CONTINUER -->
+
+        <button
+          type="button"
+          class="continue-button large-button"
+          (click)="continueToDate()"
+        >
+
+          Découvrir la suite
+
+          <span>
+            →
+          </span>
+
+        </button>
+
+
+        <!-- RETOUR -->
+
+        <button
+          type="button"
+          class="back-button"
+          (click)="goBack()"
+        >
+
+          ← Retour
+
+        </button>
+
+      </section>
+
+
+
+      <!-- =================================================
+           ÉTAPE 3 — DATE ET HEURE
+      ================================================== -->
+
+      <section
+        class="step-content"
+        *ngIf="currentStep === 3"
+      >
+
+        <p class="eyebrow">
+          IL NE RESTE PLUS QU'À CHOISIR
+        </p>
+
+
+        <div class="small-heart">
+          🕐
+        </div>
+
+
+        <h2 class="step-title">
+
+          Quand est-ce que<br>
+          tu serais disponible ?
+
+        </h2>
+
+
+        <!-- =================================================
+             DATE
+        ================================================== -->
+
+        <div class="date-card">
+
+          <div class="date-icon">
+            📅
+          </div>
+
+          <div>
+
+            <span>
+              LA DATE
+            </span>
+
+            <strong>
+              {{ invitation.date | date:'EEEE d MMMM yyyy' }}
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             QUESTION HEURE
+        ================================================== -->
+
+        <p class="time-question">
+          Quelle heure te convient le mieux ? ❤️
+        </p>
+
+
+        <!-- =================================================
+             HORAIRES DISPONIBLES
+        ================================================== -->
+
+        <div class="time-options">
+
+          <button
+            type="button"
+            class="time-option"
+            *ngFor="let time of getAvailableTimes()"
+            [class.selected]="selectedTime === time"
+            (click)="chooseTime(time)"
+          >
+
+            <span class="time-icon">
+              ♡
+            </span>
+
+
+            <span class="time-value">
+              {{ time }}
+            </span>
+
+
+            <span
+              class="check"
+              *ngIf="selectedTime === time"
+            >
+              ✓
+            </span>
+
+          </button>
+
+        </div>
+
+
+        <!-- =================================================
+             NAVIGATION
+        ================================================== -->
+
+        <div class="navigation-buttons">
+
+          <button
+            type="button"
+            class="back-button"
+            (click)="goBack()"
+          >
+
+            ← Retour
+
+          </button>
+
+
+          <button
+            type="button"
+            class="continue-button"
+            [disabled]="!selectedTime"
+            (click)="continueToConfirmation()"
+          >
+
+            Continuer
+
+            <span>
+              →
+            </span>
+
+          </button>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- =================================================
+           ÉTAPE 4 — CONFIRMATION
+      ================================================== -->
+
+      <section
+        class="step-content confirmation-step"
+        *ngIf="currentStep === 4"
+      >
+
+
+        <!-- =================================================
+             RÉPONSE DÉJÀ ENVOYÉE
+        ================================================== -->
+
+        <ng-container *ngIf="responseSent">
+
+          <div class="confirmation-heart">
+            💌
+          </div>
+
+
+          <p class="eyebrow">
+            C'EST ENVOYÉ
+          </p>
+
+
+          <h2 class="step-title">
+
+            Merci pour ta réponse ❤️
+
+          </h2>
+
+
+          <div class="ornament">
+
+            <span></span>
+
+            ♡
+
+            <span></span>
+
+          </div>
+
+
+          <p class="confirmation-text">
+
+            Ta réponse a bien été envoyée.<br>
+
+            Je sais maintenant ce que tu as choisi. ❤️
+
+          </p>
+
+
+          <!-- =================================================
+               RÉSUMÉ SI OUI
+          ================================================== -->
+
+          <div
+            class="response-summary"
+            *ngIf="answer === 'yes'"
+          >
+
+            <!-- ACTIVITÉ -->
+
+            <div class="summary-item">
+
+              <span>
+                NOTRE MOMENT
+              </span>
+
+              <strong>
+                {{ invitation.activity }}
+              </strong>
+
+            </div>
+
+
+            <!-- LIEU -->
+
+            <div class="summary-item">
+
+              <span>
+                LIEU
+              </span>
+
+              <strong>
+                {{ invitation.location }}
+              </strong>
+
+            </div>
+
+
+            <!-- DATE -->
+
+            <div class="summary-item">
+
+              <span>
+                DATE
+              </span>
+
+              <strong>
+                {{ invitation.date | date:'d MMMM yyyy' }}
+              </strong>
+
+            </div>
+
+
+            <!-- HEURE -->
+
+            <div class="summary-item">
+
+              <span>
+                HEURE CHOISIE
+              </span>
+
+              <strong>
+                {{ selectedTime }}
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <p class="confirmation-love">
+
+            ❤️ À très bientôt ❤️
+
+          </p>
+
+        </ng-container>
+
+
+
+        <!-- =================================================
+             RÉPONSE OUI — AVANT ENVOI
+        ================================================== -->
+
+        <ng-container
+          *ngIf="!responseSent && answer === 'yes'"
+        >
+
+          <div class="confirmation-heart">
+            ❤️
+          </div>
+
+
+          <p class="eyebrow">
+            C'EST NOTÉ
+          </p>
+
+
+          <h2 class="step-title">
+
+            Alors c'est un<br>
+            rendez-vous ! ❤️
+
+          </h2>
+
+
+          <p class="confirmation-text">
+
+            J'ai hâte de partager<br>
+            ce moment avec toi.
+
+          </p>
+
+
+          <!-- =================================================
+               RÉSUMÉ
+          ================================================== -->
+
+          <div class="response-summary">
+
+
+            <!-- ACTIVITÉ -->
+
+            <div class="summary-item">
+
+              <span>
+                NOTRE MOMENT
+              </span>
+
+              <strong>
+                {{ invitation.activity }}
+              </strong>
+
+            </div>
+
+
+            <!-- LIEU -->
+
+            <div class="summary-item">
+
+              <span>
+                LIEU
+              </span>
+
+              <strong>
+                {{ invitation.location }}
+              </strong>
+
+            </div>
+
+
+            <!-- DATE -->
+
+            <div class="summary-item">
+
+              <span>
+                DATE
+              </span>
+
+              <strong>
+                {{ invitation.date | date:'d MMMM yyyy' }}
+              </strong>
+
+            </div>
+
+
+            <!-- HEURE -->
+
+            <div class="summary-item">
+
+              <span>
+                HEURE
+              </span>
+
+              <strong>
+                {{ selectedTime }}
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <!-- =================================================
+               PETIT MOT
+          ================================================== -->
+
+          <div class="message-section">
+
+            <label>
+              Un petit mot pour moi ? 💌
+            </label>
+
+
+            <textarea
+              [(ngModel)]="responseMessage"
+              maxlength="300"
+              placeholder="Écris quelque chose de doux..."
+            ></textarea>
+
+
+            <span class="counter">
+              {{ responseMessage.length }}/300
+            </span>
+
+          </div>
+
+
+          <!-- =================================================
+               CONFIRMER
+          ================================================== -->
+
+          <button
+            type="button"
+            class="yes-button final-button"
+            [disabled]="isSending"
+            (click)="sendResponse()"
+          >
+
+            <ng-container *ngIf="!isSending">
+
+              Confirmer mon choix
+
+              <span>
+                ❤️
+              </span>
+
+            </ng-container>
+
+
+            <ng-container *ngIf="isSending">
+
+              Envoi en cours...
+
+            </ng-container>
+
+          </button>
+
+        </ng-container>
+
+
+
+        <!-- =================================================
+             RÉPONSE NON — AVANT ENVOI
+        ================================================== -->
+
+        <ng-container
+          *ngIf="!responseSent && answer === 'no'"
+        >
+
+          <div class="confirmation-heart soft">
+            💗
+          </div>
+
+
+          <p class="eyebrow">
+            MERCI POUR TA RÉPONSE
+          </p>
+
+
+          <h2 class="step-title">
+
+            Peut-être<br>
+            une prochaine fois...
+
+          </h2>
+
+
+          <p class="confirmation-text">
+
+            Même si ce n'est pas pour cette fois,
+            merci d'avoir pris le temps de répondre. ❤️
+
+          </p>
+
+
+          <!-- =================================================
+               PETIT MOT
+          ================================================== -->
+
+          <div class="message-section">
+
+            <label>
+              Tu veux me laisser un petit mot ?
+            </label>
+
+
+            <textarea
+              [(ngModel)]="responseMessage"
+              maxlength="300"
+              placeholder="Même quelques mots..."
+            ></textarea>
+
+
+            <span class="counter">
+              {{ responseMessage.length }}/300
+            </span>
+
+          </div>
+
+
+          <!-- =================================================
+               ENVOYER
+          ================================================== -->
+
+          <button
+            type="button"
+            class="continue-button final-button"
+            [disabled]="isSending"
+            (click)="sendResponse()"
+          >
+
+            <ng-container *ngIf="!isSending">
+
+              Envoyer ma réponse
+
+            </ng-container>
+
+
+            <ng-container *ngIf="isSending">
+
+              Envoi en cours...
+
+            </ng-container>
+
+          </button>
+
+        </ng-container>
+
+      </section>
+
+    </div>
+
+  </main>
+
+
+
+  <!-- =====================================================
+       RÉPONSE DÉJÀ ENVOYÉE
+  ====================================================== -->
+
+  <main
+    class="response-container already-answered"
+    *ngIf="invitation && responseAlreadySent"
+  >
+
+    <div class="response-card">
+
+
+      <!-- =================================================
+           ICÔNE
+      ================================================== -->
+
+      <div
+        class="confirmation-heart"
+        *ngIf="existingResponse?.answer === 'yes'"
+      >
+        ❤️
+      </div>
+
+
+      <div
+        class="confirmation-heart soft"
+        *ngIf="existingResponse?.answer === 'no'"
+      >
+        💗
+      </div>
+
+
+      <!-- =================================================
+           TITRE
+      ================================================== -->
+
+      <p class="eyebrow">
+        C'EST DÉJÀ ENVOYÉ
+      </p>
+
+
+      <h2 class="step-title">
+
+        Merci pour ta réponse ❤️
+
+      </h2>
+
+
+      <div class="ornament">
+
+        <span></span>
+
+        ♡
+
+        <span></span>
+
+      </div>
+
+
+      <p class="confirmation-text">
+
+        Tu as déjà répondu à cette invitation.<br>
+
+        Merci d'avoir pris le temps de répondre. ❤️
+
+      </p>
+
+
+      <!-- =================================================
+           RÉSUMÉ DE LA RÉPONSE
+      ================================================== -->
+
+      <div
+        class="response-summary"
+        *ngIf="existingResponse"
+      >
+
+
+        <!-- =================================================
+             RÉPONSE
+        ================================================== -->
+
+        <div class="summary-item">
+
+          <span>
+            TA RÉPONSE
+          </span>
+
+
+          <strong>
+
+            <ng-container
+              *ngIf="existingResponse.answer === 'yes'"
+            >
+
+              Oui, avec plaisir ❤️
+
+            </ng-container>
+
+
+            <ng-container
+              *ngIf="existingResponse.answer === 'no'"
+            >
+
+              Je préfère pas 💗
+
+            </ng-container>
+
+          </strong>
+
+        </div>
+
+
+        <!-- =================================================
+             ACTIVITÉ — SI OUI
+        ================================================== -->
+
+        <div
+          class="summary-item"
+          *ngIf="existingResponse.answer === 'yes'"
+        >
+
+          <span>
+            NOTRE MOMENT
+          </span>
+
+          <strong>
+            {{ invitation.activity }}
+          </strong>
+
+        </div>
+
+
+        <!-- =================================================
+             LIEU — SI OUI
+        ================================================== -->
+
+        <div
+          class="summary-item"
+          *ngIf="existingResponse.answer === 'yes'"
+        >
+
+          <span>
+            LIEU
+          </span>
+
+          <strong>
+            {{ invitation.location }}
+          </strong>
+
+        </div>
+
+
+        <!-- =================================================
+             DATE — SI OUI
+        ================================================== -->
+
+        <div
+          class="summary-item"
+          *ngIf="existingResponse.answer === 'yes'"
+        >
+
+          <span>
+            DATE
+          </span>
+
+          <strong>
+            {{ invitation.date | date:'d MMMM yyyy' }}
+          </strong>
+
+        </div>
+
+
+        <!-- =================================================
+             HEURE — SI OUI
+        ================================================== -->
+
+        <div
+          class="summary-item"
+          *ngIf="
+            existingResponse.answer === 'yes' &&
+            existingResponse.selectedTime
+          "
+        >
+
+          <span>
+            HEURE CHOISIE
+          </span>
+
+          <strong>
+            {{ existingResponse.selectedTime }}
+          </strong>
+
+        </div>
+
+
+        <!-- =================================================
+             PETIT MOT
+        ================================================== -->
+
+        <div
+          class="summary-item"
+          *ngIf="existingResponse.message"
+        >
+
+          <span>
+            TON PETIT MOT
+          </span>
+
+          <strong>
+            {{ existingResponse.message }}
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <!-- =================================================
+           MESSAGE FINAL
+      ================================================== -->
+
+      <p class="confirmation-love">
+
+        ❤️ À très bientôt ❤️
+
+      </p>
+
+    </div>
+
+  </main>
+
+
+
+  <!-- =====================================================
+       INVITATION INTROUVABLE
+  ====================================================== -->
+
+  <div
+    class="not-found"
+    *ngIf="!invitation"
+  >
+
+    <div class="not-found-card">
+
+      <span>
+        ♡
+      </span>
+
+
+      <h2>
+
+        Cette invitation<br>
+        n'existe plus.
+
+      </h2>
+
+
+      <p>
+
+        Désolé, impossible de retrouver cette invitation.
+
+      </p>
+
+    </div>
+
+  </div>
+
+</div>

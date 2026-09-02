@@ -1,0 +1,1477 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+
+:host {
+  display: block;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.response-page {
+  min-height: 100vh;
+
+  position: relative;
+
+  overflow: hidden;
+
+  display: flex;
+
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(255, 205, 218, 0.45),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 90%,
+      rgba(245, 195, 210, 0.35),
+      transparent 30%
+    ),
+    #fff9f7;
+
+  color: #542b35;
+}
+
+
+/* =========================================================
+   CONTENEUR
+========================================================= */
+
+.response-container {
+  position: relative;
+
+  z-index: 2;
+
+  width: min(620px, calc(100% - 30px));
+
+  padding: 35px 0 60px;
+
+  margin: auto;
+
+  animation: pageAppear 0.7s ease;
+}
+
+
+@keyframes pageAppear {
+
+  from {
+    opacity: 0;
+
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+
+}
+
+
+/* =========================================================
+   ÉTAPES
+========================================================= */
+
+.steps {
+  width: min(500px, 100%);
+
+  margin: 0 auto 25px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+
+.step {
+  min-width: 65px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  color: #c6a6ad;
+
+  transition: 0.3s ease;
+}
+
+
+.step span {
+  width: 30px;
+
+  height: 30px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.8);
+
+  border: 1px solid rgba(165, 87, 104, 0.15);
+
+  font-family: 'Montserrat', sans-serif;
+
+  font-size: 9px;
+
+  transition: 0.3s ease;
+}
+
+
+.step small {
+  margin-top: 6px;
+
+  font-family: 'Montserrat', sans-serif;
+
+  font-size: 7px;
+
+  font-weight: 500;
+
+  letter-spacing: 0.4px;
+
+  white-space: nowrap;
+}
+
+
+.step.active {
+  color: #7d3f4d;
+}
+
+
+.step.active span {
+  background: #7d3f4d;
+
+  border-color: #7d3f4d;
+
+  color: white;
+
+  box-shadow:
+    0 5px 15px rgba(125, 63, 77, 0.20);
+}
+
+
+.step.completed span {
+  background: #a55768;
+
+  border-color: #a55768;
+
+  color: white;
+}
+
+
+.line {
+  flex: 1;
+
+  height: 1px;
+
+  max-width: 60px;
+
+  margin: 0 4px;
+
+  background: rgba(165, 87, 104, 0.15);
+
+  transform: translateY(-9px);
+
+  transition: background 0.3s ease;
+}
+
+
+.line.active {
+  background: #a55768;
+}
+
+
+/* =========================================================
+   CARTE
+========================================================= */
+
+.response-card {
+  position: relative;
+
+  padding: 50px 42px 42px;
+
+  border-radius: 32px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fffdfc,
+      #fff7f5
+    );
+
+  border: 1px solid rgba(165, 87, 104, 0.14);
+
+  box-shadow:
+    0 30px 90px rgba(100, 50, 60, 0.12);
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   ÉTAPE
+========================================================= */
+
+.step-content {
+  text-align: center;
+
+  animation: stepAppear 0.45s ease;
+}
+
+
+@keyframes stepAppear {
+
+  from {
+    opacity: 0;
+
+    transform: translateX(15px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateX(0);
+  }
+
+}
+
+
+/* =========================================================
+   ÉLÉMENTS DÉCORATIFS
+========================================================= */
+
+.big-heart {
+  font-size: 48px;
+
+  margin-bottom: 15px;
+
+  animation:
+    heartbeat 2s ease-in-out infinite;
+}
+
+
+.small-heart {
+  font-size: 38px;
+
+  margin-bottom: 18px;
+}
+
+
+@keyframes heartbeat {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.10);
+  }
+
+}
+
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
+.eyebrow {
+  margin: 0 0 18px;
+
+  font-family: 'Montserrat', sans-serif;
+
+  font-size: 8px;
+
+  font-weight: 500;
+
+  letter-spacing: 2.4px;
+
+  color: #a87983;
+}
+
+
+/* =========================================================
+   NOM
+========================================================= */
+
+.response-card h1 {
+  margin: 0;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 76px;
+
+  font-weight: 500;
+
+  line-height: 0.9;
+
+  letter-spacing: -2px;
+
+  color: #542b35;
+}
+
+
+/* =========================================================
+   ORNEMENT
+========================================================= */
+
+.ornament {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  margin: 27px 0;
+  
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 20px;
+
+  color: #a55768;
+}
+
+
+.ornament span {
+  width: 48px;
+
+  height: 1px;
+
+  background: rgba(165, 87, 104, 0.25);
+}
+
+
+/* =========================================================
+   QUESTION
+========================================================= */
+
+.question-intro {
+  margin: 0 0 10px;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 21px;
+
+  font-style: italic;
+
+  color: #a87983;
+}
+
+
+.main-question {
+  margin: 0;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 38px;
+
+  line-height: 1.05;
+
+  font-weight: 500;
+
+  color: #542b35;
+}
+
+
+.question-subtitle {
+  margin: 17px 0 28px;
+
+  font-size: 18px;
+}
+
+
+/* =========================================================
+   BOUTONS
+========================================================= */
+
+.response-actions {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+.yes-button {
+  width: min(330px, 100%);
+
+  padding: 17px 25px;
+
+  border: none;
+
+  border-radius: 100px;
+
+  background: #7d3f4d;
+
+  color: white;
+
+  cursor: pointer;
+
+  font-family: 'Montserrat', sans-serif;
+
+  font-size: 11px;
+
+  font-weight: 500;
+
+  box-shadow:
+    0 12px 30px rgba(125, 63, 77, 0.20);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.yes-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 17px 35px rgba(125, 63, 77, 0.28);
+}
+
+
+.yes-button span {
+  margin-left: 5px;
+}
+
+
+.no-button,
+.back-button {
+  border: none;
+
+  background: transparent;
+
+  color: #b38a92;
+
+  cursor: pointer;
+
+  font-family: 'Montserrat', sans-serif;
+
+  font-size: 10px;
+
+  transition: color 0.2s ease;
+}
+
+
+.no-button {
+  padding: 8px 15px;
+}
+
+
+.no-button:hover,
+.back-button:hover {
+  color: #7d3f4d;
+}
+
+
+/* =========================================================
+   TITRES
+========================================================= */
+
+.step-title {
+  margin: 0;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 42px;
+
+  line-height: 1.05;
+
+  font-weight: 500;
+
+  color: #542b35;
+}
+
+
+.step-description {
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 20px;
+
+  font-style: italic;
+
+  color: #8d626b;
+}
+
+
+/* =========================================================
+   MESSAGE PROPOSITION
+========================================================= */
+
+.proposal-message {
+  max-width: 430px;
+
+  margin: 20px auto 27px;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 22px;
+
+  line-height: 1.45;
+
+  font-style: italic;
+
+  color: #79515a;
+}
+
+
+/* =========================================================
+   CARTES PROPOSITION
+========================================================= */
+
+.proposal-card {
+  max-width: 420px;
+
+  margin: 0 auto 10px;
+
+  padding: 16px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  text-align: left;
+
+  border-radius: 17px;
+
+  background: rgba(255, 255, 255, 0.65);
+
+  border: 1px solid rgba(165, 87, 104, 0.10);
+
+  transition: 0.25s ease;
+}
+
+
+.proposal-card:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 25px rgba(100, 50, 60, 0.06);
+}
+
+
+.proposal-icon {
+  width: 42px;
+
+  height: 42px;
+
+  flex: 0 0 42px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(165, 87, 104, 0.08);
+
+  color: #a55768;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 21px;
+}
+
+
+.proposal-content span {
+  display: block;
+
+  margin-bottom: 4px;
+
+  font-family: 'Montserrat', sans-serif;
+
+  font-size: 7px;
+
+  font-weight: 600;
+
+  letter-spacing: 1.2px;
+
+  color: #a87983;
+}
+
+
+.proposal-content strong {
+  display: block;
+
+  font-family: 'Montserrat', sans-serif;
+
+  font-size: 11px;
+
+  font-weight: 500;
+
+  color: #542b35;
+}
+
+
+/* =========================================================
+   BOUTON CONTINUER
+========================================================= */
+
+.continue-button {
+  padding: 14px 23px;
+
+  border: none;
+
+  border-radius: 100px;
+
+  background: #7d3f4d;
+
+  color: white;
+
+  cursor: pointer;
+
+  font-family: 'Montserrat', sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 500;
+
+  box-shadow:
+    0 8px 20px rgba(125, 63, 77, 0.18);
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.continue-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+
+.continue-button:disabled {
+  opacity: 0.35;
+
+  cursor: not-allowed;
+
+  box-shadow: none;
+}
+
+
+.continue-button span {
+  margin-left: 6px;
+}
+
+
+.large-button {
+  margin-top: 25px;
+
+  padding: 16px 28px;
+}
+
+
+.back-button {
+  display: block;
+
+  margin: 13px auto 0;
+
+  padding: 8px 14px;
+}
+
+
+/* =========================================================
+   DATE
+========================================================= */
+
+.date-card {
+  max-width: 390px;
+
+  margin: 25px auto;
+
+  padding: 18px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  text-align: left;
+
+  border-radius: 18px;
+
+  background: rgba(165, 87, 104, 0.06);
+
+  border: 1px solid rgba(165, 87, 104, 0.10);
+}
+
+
+.date-icon {
+  width: 43px;
+
+  height: 43px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: white;
+
+  font-size: 20px;
+}
+
+
+.date-card span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-family: 'Montserrat', sans-serif;
+
+  font-size: 7px;
+
+  font-weight: 600;
+
+  letter-spacing: 1.2px;
+
+  color: #a87983;
+}
+
+
+.date-card strong {
+  display: block;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 22px;
+
+  font-weight: 600;
+
+  color: #542b35;
+}
+
+
+/* =========================================================
+   HEURE
+========================================================= */
+
+.time-question {
+  margin: 25px 0 17px;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 22px;
+
+  font-style: italic;
+
+  color: #79515a;
+}
+
+
+.time-options {
+  max-width: 390px;
+
+  margin: 0 auto 28px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 9px;
+}
+
+
+.time-option {
+  position: relative;
+
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  padding: 15px 17px;
+
+  border: 1px solid rgba(165, 87, 104, 0.13);
+
+  border-radius: 15px;
+
+  background: rgba(255, 255, 255, 0.65);
+
+  cursor: pointer;
+
+  text-align: left;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.time-option:hover {
+  transform: translateY(-2px);
+
+  border-color: rgba(165, 87, 104, 0.3);
+
+  box-shadow:
+    0 8px 20px rgba(100, 50, 60, 0.06);
+}
+
+
+.time-option.selected {
+  background: rgba(165, 87, 104, 0.08);
+
+  border-color: #a55768;
+
+  box-shadow:
+    0 8px 22px rgba(165, 87, 104, 0.10);
+}
+
+
+.time-icon {
+  width: 36px;
+
+  height: 36px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin-right: 13px;
+
+  border-radius: 50%;
+
+  background: rgba(165, 87, 104, 0.08);
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 19px;
+
+  color: #a55768;
+}
+
+
+.time-value {
+  font-family: 'Montserrat', sans-serif;
+
+  font-size: 12px;
+
+  font-weight: 500;
+
+  color: #542b35;
+}
+
+
+.check {
+  position: absolute;
+
+  right: 17px;
+
+  width: 23px;
+
+  height: 23px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #7d3f4d;
+
+  color: white;
+
+  font-family: 'Montserrat', sans-serif;
+
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navigation-buttons {
+  max-width: 390px;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+
+/* =========================================================
+   CONFIRMATION
+========================================================= */
+
+.confirmation-step {
+  padding-top: 5px;
+}
+
+
+.confirmation-heart {
+  width: 85px;
+
+  height: 85px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin: 0 auto 25px;
+
+  border-radius: 50%;
+
+  background: rgba(165, 87, 104, 0.08);
+
+  font-size: 39px;
+
+  animation:
+    confirmationAppear 0.7s ease,
+    heartbeat 2s ease-in-out 1s infinite;
+}
+
+
+.confirmation-heart.soft {
+  background: rgba(165, 87, 104, 0.06);
+}
+
+
+@keyframes confirmationAppear {
+
+  from {
+    opacity: 0;
+
+    transform: scale(0.5);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: scale(1);
+  }
+
+}
+
+
+.confirmation-text {
+  max-width: 390px;
+
+  margin: 18px auto 28px;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 23px;
+
+  line-height: 1.4;
+
+  font-style: italic;
+
+  color: #79515a;
+}
+
+
+/* =========================================================
+   RÉSUMÉ
+========================================================= */
+
+.response-summary {
+  max-width: 390px;
+
+  margin: 0 auto 27px;
+
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(165, 87, 104, 0.10);
+
+  background: rgba(255, 255, 255, 0.55);
+}
+
+
+.summary-item {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 14px 17px;
+
+  text-align: right;
+
+  border-bottom: 1px solid rgba(165, 87, 104, 0.08);
+}
+
+
+.summary-item:last-child {
+  border-bottom: none;
+}
+
+
+.summary-item span {
+  font-family: 'Montserrat', sans-serif;
+
+  font-size: 7px;
+
+  font-weight: 600;
+
+  letter-spacing: 1px;
+
+  color: #a87983;
+}
+
+
+.summary-item strong {
+  font-family: 'Montserrat', sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 500;
+
+  color: #542b35;
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.message-section {
+  position: relative;
+
+  max-width: 390px;
+
+  margin: 0 auto 25px;
+
+  text-align: left;
+}
+
+
+.message-section label {
+  display: block;
+
+  margin-bottom: 9px;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 19px;
+
+  font-style: italic;
+
+  color: #79515a;
+}
+
+
+.message-section textarea {
+  width: 100%;
+
+  min-height: 120px;
+
+  box-sizing: border-box;
+
+  resize: vertical;
+
+  padding: 16px 17px 30px;
+
+  border: 1px solid rgba(165, 87, 104, 0.15);
+
+  border-radius: 17px;
+
+  outline: none;
+
+  background: rgba(255, 255, 255, 0.7);
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 19px;
+
+  line-height: 1.4;
+
+  color: #542b35;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.message-section textarea::placeholder {
+  color: #c1a2a9;
+
+  font-style: italic;
+}
+
+
+.message-section textarea:focus {
+  border-color: #a55768;
+
+  box-shadow:
+    0 0 0 3px rgba(165, 87, 104, 0.08);
+}
+
+
+.counter {
+  position: absolute;
+
+  right: 12px;
+
+  bottom: 9px;
+
+  font-family: 'Montserrat', sans-serif;
+
+  font-size: 7px;
+
+  color: #b38a92;
+}
+
+
+.final-button {
+  margin-top: 3px;
+}
+
+
+/* =========================================================
+   INVITATION INTROUVABLE
+========================================================= */
+
+.not-found {
+  min-height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 20px;
+
+  box-sizing: border-box;
+
+  background: #fff9f7;
+}
+
+
+.not-found-card {
+  max-width: 420px;
+
+  padding: 45px 30px;
+
+  text-align: center;
+
+  border-radius: 25px;
+
+  background: white;
+
+  box-shadow:
+    0 25px 70px rgba(100, 50, 60, 0.10);
+}
+
+
+.not-found-card > span {
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 55px;
+
+  color: #a55768;
+}
+
+
+.not-found-card h2 {
+  margin: 15px 0;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 32px;
+
+  font-weight: 500;
+}
+
+
+.not-found-card p {
+  font-family: 'Montserrat', sans-serif;
+
+  font-size: 11px;
+
+  color: #a87983;
+}
+
+
+/* =========================================================
+   COEURS FLOTTANTS
+========================================================= */
+
+.floating-heart {
+  position: absolute;
+
+  z-index: 1;
+
+  pointer-events: none;
+
+  user-select: none;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  color: rgba(165, 87, 104, 0.14);
+
+  animation: floatHeart 8s ease-in-out infinite;
+}
+
+
+.heart-1 {
+  top: 8%;
+  left: 6%;
+
+  font-size: 70px;
+}
+
+
+.heart-2 {
+  top: 30%;
+  right: 6%;
+
+  font-size: 40px;
+
+  animation-delay: 2s;
+}
+
+
+.heart-3 {
+  bottom: 10%;
+  left: 8%;
+
+  font-size: 48px;
+
+  animation-delay: 4s;
+}
+
+
+.heart-4 {
+  right: 10%;
+  bottom: 7%;
+
+  font-size: 30px;
+
+  animation-delay: 5s;
+}
+
+
+@keyframes floatHeart {
+
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      rotate(0);
+  }
+
+  50% {
+    transform:
+      translateY(-18px)
+      rotate(5deg);
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .response-container {
+    width: calc(100% - 20px);
+
+    padding: 20px 0 35px;
+  }
+
+
+  .response-card {
+    padding: 40px 18px 32px;
+
+    border-radius: 25px;
+  }
+
+
+  /* étapes */
+
+  .steps {
+    margin-bottom: 18px;
+  }
+
+
+  .step {
+    min-width: 48px;
+  }
+
+
+  .step span {
+    width: 27px;
+    height: 27px;
+
+    font-size: 8px;
+  }
+
+
+  .step small {
+    font-size: 6px;
+  }
+
+
+  .line {
+    max-width: 38px;
+
+    margin: 0 2px;
+  }
+
+
+  /* question */
+
+  .big-heart {
+    font-size: 40px;
+  }
+
+
+  .response-card h1 {
+    font-size: 59px;
+  }
+
+
+  .main-question {
+    font-size: 31px;
+  }
+
+
+  .question-intro {
+    font-size: 19px;
+  }
+
+
+  /* autres étapes */
+
+  .step-title {
+    font-size: 35px;
+  }
+
+
+  .proposal-message {
+    font-size: 20px;
+  }
+
+
+  .proposal-card {
+    padding: 13px;
+  }
+
+
+  .proposal-icon {
+    width: 38px;
+    height: 38px;
+
+    flex-basis: 38px;
+  }
+
+
+  /* date */
+
+  .date-card strong {
+    font-size: 19px;
+  }
+
+
+  .time-question {
+    font-size: 20px;
+  }
+
+
+  /* confirmation */
+
+  .confirmation-heart {
+    width: 72px;
+    height: 72px;
+
+    font-size: 32px;
+  }
+
+
+  .confirmation-text {
+    font-size: 21px;
+  }
+
+
+  /* résumé */
+
+  .summary-item {
+    padding: 13px;
+  }
+
+
+  /* décorations */
+
+  .heart-1 {
+    top: 7%;
+    left: 1%;
+
+    font-size: 43px;
+  }
+
+
+  .heart-2 {
+    top: 28%;
+    right: 1%;
+
+    font-size: 28px;
+  }
+
+
+  .heart-3 {
+    bottom: 8%;
+    left: 2%;
+
+    font-size: 35px;
+  }
+
+
+  .heart-4 {
+    right: 3%;
+    bottom: 5%;
+
+    font-size: 23px;
+  }
+
+}

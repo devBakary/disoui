@@ -1,0 +1,734 @@
+.gestion-page {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+
+  padding: 50px 20px 70px;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(255, 210, 220, 0.45),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(255, 225, 235, 0.5),
+      transparent 35%
+    ),
+    #fff8fa;
+
+  color: #4b2935;
+}
+
+
+/* =========================================================
+   DÉCORATIONS
+========================================================= */
+
+.floating-heart {
+  position: fixed;
+  pointer-events: none;
+  user-select: none;
+
+  font-family: Georgia, serif;
+
+  opacity: 0.35;
+
+  animation: floating 6s ease-in-out infinite;
+}
+
+
+.heart-1 {
+  top: 12%;
+  left: 5%;
+
+  font-size: 42px;
+
+  animation-delay: 0s;
+}
+
+
+.heart-2 {
+  top: 25%;
+  right: 6%;
+
+  font-size: 28px;
+
+  animation-delay: 1.5s;
+}
+
+
+.heart-3 {
+  bottom: 20%;
+  left: 8%;
+
+  font-size: 32px;
+
+  animation-delay: 3s;
+}
+
+
+.heart-4 {
+  bottom: 10%;
+  right: 10%;
+
+  font-size: 30px;
+
+  animation-delay: 4.5s;
+}
+
+
+@keyframes floating {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+
+}
+
+
+
+/* =========================================================
+   CHARGEMENT
+========================================================= */
+
+.loading-container {
+  min-height: 70vh;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  color: #8d6572;
+}
+
+
+.loading-heart {
+  font-size: 55px;
+
+  animation: heartbeat 1.4s ease-in-out infinite;
+}
+
+
+.loading-container p {
+  margin-top: 15px;
+
+  font-size: 15px;
+}
+
+
+@keyframes heartbeat {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.18);
+  }
+
+}
+
+
+
+/* =========================================================
+   CONTENEUR
+========================================================= */
+
+.gestion-container {
+  position: relative;
+
+  width: 100%;
+  max-width: 900px;
+
+  margin: 0 auto;
+}
+
+
+
+/* =========================================================
+   EN-TÊTE
+========================================================= */
+
+.gestion-header {
+  text-align: center;
+
+  margin-bottom: 35px;
+}
+
+
+.eyebrow {
+  margin: 0 0 12px;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 3px;
+
+  color: #b76b82;
+
+  text-transform: uppercase;
+}
+
+
+.gestion-header h1 {
+  margin: 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(32px, 5vw, 48px);
+
+  font-weight: 500;
+
+  color: #542b38;
+}
+
+
+.header-subtitle {
+  margin: 12px auto 0;
+
+  max-width: 520px;
+
+  font-size: 15px;
+
+  line-height: 1.7;
+
+  color: #98717d;
+}
+
+
+
+/* =========================================================
+   CARTE RÉPONSE
+========================================================= */
+
+.response-card {
+  padding: 40px;
+
+  background: white;
+
+  border-radius: 26px;
+
+  border: 1px solid rgba(196, 121, 142, 0.16);
+
+  box-shadow:
+    0 20px 55px rgba(108, 54, 70, 0.09);
+}
+
+
+.response-header {
+  text-align: center;
+
+  margin-bottom: 30px;
+}
+
+
+.response-icon {
+  width: 72px;
+  height: 72px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 18px;
+
+  border-radius: 50%;
+
+  font-size: 34px;
+}
+
+
+.response-icon.yes {
+  background: #fff0f4;
+}
+
+
+.response-icon.no {
+  background: #fdf1f4;
+}
+
+
+.response-header h2 {
+  margin: 0;
+
+  font-family: Georgia, serif;
+
+  font-size: clamp(26px, 4vw, 34px);
+
+  font-weight: 500;
+
+  color: #59303d;
+}
+
+
+
+/* =========================================================
+   BLOC RÉPONSE
+========================================================= */
+
+.answer-box {
+  padding: 23px;
+
+  margin-bottom: 20px;
+
+  text-align: center;
+
+  border-radius: 17px;
+
+  background: #fff7f9;
+
+  border: 1px solid #f4dce3;
+}
+
+
+.answer-label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  color: #b98694;
+}
+
+
+.answer-box strong {
+  display: block;
+
+  font-family: Georgia, serif;
+
+  font-size: 22px;
+
+  font-weight: 500;
+}
+
+
+.answer-yes {
+  color: #a94d68;
+}
+
+
+.answer-no {
+  color: #98717c;
+}
+
+
+
+/* =========================================================
+   DÉTAILS DE LA RÉPONSE
+========================================================= */
+
+.response-details {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 13px;
+
+  margin-bottom: 22px;
+}
+
+
+.response-detail {
+  padding: 18px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  border-radius: 15px;
+
+  background: #fffafb;
+
+  border: 1px solid #f3dfe5;
+}
+
+
+.response-detail-icon {
+  width: 38px;
+  height: 38px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #fce9ef;
+
+  font-size: 17px;
+}
+
+
+.response-detail span {
+  display: block;
+
+  margin-bottom: 4px;
+
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 1.4px;
+
+  color: #b58996;
+}
+
+
+.response-detail strong {
+  display: block;
+
+  font-size: 13px;
+
+  color: #5c3642;
+}
+
+
+
+/* =========================================================
+   PETIT MOT
+========================================================= */
+
+.received-message {
+  margin-top: 20px;
+
+  padding: 24px;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff5f8,
+      #fffafa
+    );
+
+  border-left: 3px solid #cf8196;
+}
+
+
+.message-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin-bottom: 12px;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 1.8px;
+
+  color: #b36d81;
+}
+
+
+.received-message p {
+  margin: 0;
+
+  font-family: Georgia, serif;
+
+  font-size: 16px;
+
+  line-height: 1.7;
+
+  font-style: italic;
+
+  color: #6e4754;
+}
+
+
+
+/* =========================================================
+   DATE DE RÉPONSE
+========================================================= */
+
+.responded-date {
+  margin-top: 22px;
+
+  text-align: center;
+
+  font-size: 11px;
+
+  color: #aa8993;
+}
+
+
+
+/* =========================================================
+   MESSAGE FINAL
+========================================================= */
+
+.final-message {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 15px;
+
+  margin-top: 35px;
+
+  text-align: center;
+
+  color: #bb7d8e;
+}
+
+
+.final-message span {
+  font-family: Georgia, serif;
+
+  font-size: 18px;
+
+  opacity: 0.6;
+}
+
+
+.final-message p {
+  margin: 0;
+
+  font-family: Georgia, serif;
+
+  font-size: 14px;
+
+  font-style: italic;
+}
+
+
+
+/* =========================================================
+   INVITATION INTROUVABLE
+========================================================= */
+
+.not-found {
+  min-height: 70vh;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+.not-found-card {
+  width: 100%;
+  max-width: 450px;
+
+  padding: 45px 30px;
+
+  text-align: center;
+
+  background: white;
+
+  border-radius: 25px;
+
+  box-shadow:
+    0 20px 50px rgba(100, 50, 65, 0.08);
+}
+
+
+.not-found-icon {
+  margin-bottom: 15px;
+
+  font-family: Georgia, serif;
+
+  font-size: 55px;
+
+  color: #ca8195;
+}
+
+
+.not-found-card h2 {
+  margin: 10px 0;
+
+  font-family: Georgia, serif;
+
+  font-size: 28px;
+
+  font-weight: 500;
+
+  color: #59303d;
+}
+
+
+.not-found-card p:last-child {
+  margin: 0;
+
+  color: #91717b;
+
+  font-size: 14px;
+}
+
+
+
+/* =========================================================
+   RESPONSIVE — TABLETTE
+========================================================= */
+
+@media (max-width: 750px) {
+
+  .gestion-page {
+    padding: 35px 15px 50px;
+  }
+
+
+  .card-content {
+    padding: 35px 25px;
+  }
+
+
+  .details {
+    grid-template-columns: 1fr;
+  }
+
+
+  .response-details {
+    grid-template-columns: 1fr;
+  }
+
+
+  .status-card {
+    align-items: flex-start;
+
+    flex-wrap: wrap;
+  }
+
+
+  .status-badge {
+    margin-left: 80px;
+  }
+
+}
+
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 520px) {
+
+  .gestion-page {
+    padding: 25px 12px 40px;
+  }
+
+
+  .gestion-header {
+    margin-bottom: 25px;
+  }
+
+
+  .gestion-header h1 {
+    font-size: 32px;
+  }
+
+
+  .header-subtitle {
+    font-size: 14px;
+  }
+
+
+  .invitation-card {
+    border-radius: 20px;
+  }
+
+
+  .card-content {
+    padding: 30px 18px;
+  }
+
+
+  .invitation-card h2 {
+    font-size: 29px;
+  }
+
+
+  .invitation-message {
+    font-size: 15px;
+  }
+
+
+  .detail {
+    padding: 14px;
+  }
+
+
+  .detail-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+
+  .status-card {
+    padding: 22px 18px;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+
+  .status-badge {
+    margin-left: 0;
+  }
+
+
+  .response-card {
+    padding: 28px 18px;
+
+    border-radius: 20px;
+  }
+
+
+  .response-header h2 {
+    font-size: 27px;
+  }
+
+
+  .response-details {
+    grid-template-columns: 1fr;
+  }
+
+
+  .response-detail {
+    padding: 15px;
+  }
+
+
+  .received-message {
+    padding: 19px;
+  }
+
+
+  .received-message p {
+    font-size: 15px;
+  }
+
+
+  .floating-heart {
+    opacity: 0.2;
+  }
+
+}

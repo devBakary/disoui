@@ -1,0 +1,903 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+:host {
+  display: block;
+}
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.create-page {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(255, 210, 220, 0.30),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 90%,
+      rgba(255, 190, 205, 0.25),
+      transparent 30%
+    ),
+    #fff9f7;
+
+  color: #542b35;
+}
+
+
+/* =========================================================
+   CONTENEUR PRINCIPAL
+========================================================= */
+
+.create-container {
+  position: relative;
+  z-index: 2;
+
+  width: min(720px, calc(100% - 40px));
+
+  margin: auto;
+
+  padding: 65px 0 50px;
+}
+
+
+/* =========================================================
+   PETIT LABEL DU HAUT
+========================================================= */
+
+.top-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  margin-bottom: 25px;
+
+  text-align: center;
+
+  font-family: 'Montserrat', sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 500;
+
+  letter-spacing: 2.5px;
+
+  color: #9b6873;
+}
+
+.top-label span {
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   TITRE
+========================================================= */
+
+.heading {
+  text-align: center;
+
+  margin-bottom: 35px;
+}
+
+.heading h1 {
+  margin: 0;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: clamp(52px, 8vw, 80px);
+
+  line-height: 0.85;
+
+  font-weight: 500;
+
+  letter-spacing: -2px;
+
+  color: #542b35;
+}
+
+.heading h1 em {
+  color: #a55768;
+
+  font-weight: 400;
+
+  font-style: italic;
+}
+
+.heading p {
+  margin-top: 28px;
+
+  font-family: 'Montserrat', sans-serif;
+
+  font-size: 13px;
+
+  font-weight: 300;
+
+  line-height: 1.8;
+
+  color: #79515a;
+}
+
+
+/* =========================================================
+   INDICATEUR DES ÉTAPES
+========================================================= */
+
+.steps {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 100%;
+
+  max-width: 430px;
+
+  margin: 0 auto 28px;
+}
+
+
+/* Une étape */
+
+.step {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-width: 80px;
+
+  color: #c7a8ae;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+
+/* Numéro */
+
+.step span {
+  width: 30px;
+
+  height: 30px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(125, 63, 77, 0.15);
+
+  background: rgba(255, 255, 255, 0.7);
+
+  font-family: 'Montserrat', sans-serif;
+
+  font-size: 11px;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+/* Texte de l'étape */
+
+.step small {
+  margin-top: 7px;
+
+  font-family: 'Montserrat', sans-serif;
+
+  font-size: 8px;
+
+  font-weight: 500;
+
+  letter-spacing: 0.5px;
+
+  white-space: nowrap;
+}
+
+
+/* Étape active */
+
+.step.active {
+  color: #7d3f4d;
+
+  transform: translateY(-1px);
+}
+
+.step.active span {
+  background: #7d3f4d;
+
+  border-color: #7d3f4d;
+
+  color: white;
+
+  box-shadow:
+    0 5px 15px rgba(125, 63, 77, 0.20);
+}
+
+
+/* Ligne */
+
+.line {
+  flex: 1;
+
+  height: 1px;
+
+  max-width: 80px;
+
+  margin: 0 5px;
+
+  margin-bottom: 20px;
+
+  background: rgba(125, 63, 77, 0.12);
+
+  transition:
+    background 0.4s ease;
+}
+
+
+/* Ligne active */
+
+.line.active {
+  background: #7d3f4d;
+}
+
+
+/* =========================================================
+   FORMULAIRE
+========================================================= */
+
+.invitation-form {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  background: rgba(255, 255, 255, 0.72);
+
+  border: 1px solid rgba(165, 87, 104, 0.12);
+
+  border-radius: 28px;
+
+  padding: 35px;
+
+  box-shadow:
+    0 20px 60px rgba(100, 50, 60, 0.07);
+
+  backdrop-filter: blur(10px);
+}
+
+
+/* =========================================================
+   CONTENU DES ÉTAPES
+========================================================= */
+
+.step-content {
+  animation: stepAppear 0.45s ease;
+}
+
+
+/* Animation d'apparition */
+
+@keyframes stepAppear {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateX(15px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateX(0);
+  }
+
+}
+
+
+/* =========================================================
+   LIGNE DE DEUX CHAMPS
+========================================================= */
+
+.form-row {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 18px;
+}
+
+
+/* =========================================================
+   GROUPE DE FORMULAIRE
+========================================================= */
+
+.form-group {
+  position: relative;
+
+  margin-bottom: 24px;
+}
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 9px;
+
+  font-family: 'Montserrat', sans-serif;
+
+  font-size: 9px;
+
+  font-weight: 600;
+
+  letter-spacing: 1.7px;
+
+  color: #956773;
+}
+
+
+/* =========================================================
+   INPUTS + TEXTAREA
+========================================================= */
+
+input,
+textarea {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  border: 1px solid rgba(125, 63, 77, 0.14);
+
+  border-radius: 13px;
+
+  padding: 14px 16px;
+
+  outline: none;
+
+  background: rgba(255, 250, 249, 0.8);
+
+  color: #542b35;
+
+  font-family: 'Montserrat', sans-serif;
+
+  font-size: 13px;
+
+  font-weight: 400;
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+/* Textarea */
+
+textarea {
+  resize: vertical;
+
+  min-height: 110px;
+}
+
+
+/* Placeholder */
+
+input::placeholder,
+textarea::placeholder {
+  color: #bd9ca3;
+
+  font-weight: 300;
+}
+
+
+/* Focus */
+
+input:focus,
+textarea:focus {
+  background: white;
+
+  border-color: rgba(125, 63, 77, 0.45);
+
+  box-shadow:
+    0 0 0 4px rgba(125, 63, 77, 0.06);
+}
+
+
+/* =========================================================
+   DATE / TIME
+========================================================= */
+
+input[type="date"],
+input[type="time"] {
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   COMPTEUR DU MESSAGE
+========================================================= */
+
+.counter {
+  position: absolute;
+
+  right: 12px;
+  bottom: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  color: #bd9ca3;
+}
+
+
+/* =========================================================
+   GRILLE DES HORAIRES
+========================================================= */
+
+.time-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(3, 1fr);
+  gap: 10px;
+}
+
+
+/* =========================================================
+   TEXTE D'AIDE
+========================================================= */
+
+.helper {
+  margin: 8px 0 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  font-style: italic;
+  color: #a87983;
+}
+
+
+/* =========================================================
+   BOUTON PRINCIPAL
+========================================================= */
+
+.submit-button {
+  width: 100%;
+  border: none;
+  border-radius: 100px;
+  padding: 17px 22px;
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  cursor: pointer;
+  background: #7d3f4d;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  box-shadow:
+    0 12px 30px rgba(125, 63, 77, 0.20);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    opacity 0.25s ease;
+}
+
+
+/* Hover */
+
+.submit-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow:
+    0 16px 35px rgba(125, 63, 77, 0.27);
+}
+
+
+/* Click */
+
+.submit-button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+
+/* Désactivé */
+
+.submit-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+
+/* Icône du bouton */
+
+.button-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+
+/* =========================================================
+   NAVIGATION DES ÉTAPES
+========================================================= */
+
+.navigation-buttons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+
+/* Le bouton principal prend l'espace */
+
+.navigation-buttons .submit-button {
+  flex: 1;
+}
+
+
+/* Bouton retour */
+
+.back-button-form {
+  flex: 0 0 auto;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 12px 5px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: #a87983;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+/* Hover retour */
+
+.back-button-form:hover {
+  color: #7d3f4d;
+  transform: translateX(-2px);
+}
+
+
+/* =========================================================
+   RETOUR ACCUEIL
+========================================================= */
+
+.back-home {
+  display: block;
+  margin: 24px auto 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  color: #a87983;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.back-home:hover {
+  color: #7d3f4d;
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   COEURS DÉCORATIFS
+========================================================= */
+
+.background-heart {
+  position: absolute;
+  z-index: 1;
+  font-family: 'Cormorant Garamond', serif;
+  color: rgba(165, 87, 104, 0.13);
+  pointer-events: none;
+  user-select: none;
+  animation:
+    floatingHeart 8s ease-in-out infinite;
+}
+
+
+/* Cœur 1 */
+
+.heart-1 {
+  top: 8%;
+  left: 6%;
+  font-size: 65px;
+}
+
+
+/* Cœur 2 */
+
+.heart-2 {
+  top: 45%;
+  right: 5%;
+  font-size: 38px;
+  animation-delay: 2s;
+}
+
+/* Cœur 3 */
+
+.heart-3 {
+  bottom: 8%;
+  left: 8%;
+  font-size: 45px;
+  animation-delay: 4s;
+}
+
+
+/* =========================================================
+   ANIMATION DES COEURS
+========================================================= */
+
+@keyframes floatingHeart {
+
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      rotate(0deg);
+  }
+
+  50% {
+    transform:
+      translateY(-15px)
+      rotate(5deg);
+  }
+
+}
+
+
+/* =========================================================
+   TABLETTE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .create-container {
+    width: min(650px, calc(100% - 32px));
+
+    padding-top: 50px;
+  }
+
+  .heading h1 {
+    font-size: 65px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .create-container {
+    width: calc(100% - 28px);
+
+    padding-top: 40px;
+
+    padding-bottom: 35px;
+  }
+
+  /* Label */
+
+  .top-label {
+    font-size: 8px;
+
+    letter-spacing: 1.5px;
+
+    gap: 7px;
+  }
+
+  .top-label span {
+    font-size: 11px;
+  }
+
+  /* Titre */
+
+  .heading {
+    margin-bottom: 28px;
+  }
+
+  .heading h1 {
+    font-size: 58px;
+
+    letter-spacing: -1px;
+  }
+
+  .heading p {
+    margin-top: 22px;
+
+    font-size: 12px;
+  }
+
+
+  /* Étapes */
+
+  .steps {
+    width: 100%;
+
+    margin-bottom: 22px;
+  }
+
+  .step {
+    min-width: 65px;
+  }
+
+  .step span {
+    width: 27px;
+
+    height: 27px;
+
+    font-size: 10px;
+  }
+
+  .step small {
+    font-size: 7px;
+
+    letter-spacing: 0.2px;
+  }
+
+  .line {
+    max-width: 45px;
+
+    margin-left: 2px;
+
+    margin-right: 2px;
+  }
+
+
+  /* Formulaire */
+
+  .invitation-form {
+    padding: 24px 20px;
+
+    border-radius: 22px;
+  }
+
+
+  /* Deux champs deviennent un seul */
+
+  .form-row {
+    grid-template-columns: 1fr;
+
+    gap: 0;
+  }
+
+
+  /* Champs */
+
+  input,
+  textarea {
+    font-size: 13px;
+
+    padding: 14px;
+  }
+
+  /* Horaires */
+
+  .time-grid {
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+  }
+
+
+  /* Navigation */
+
+  .navigation-buttons {
+    gap: 8px;
+  }
+
+  .back-button-form {
+    padding-left: 0;
+
+    padding-right: 2px;
+  }
+  /* Bouton */
+
+  .submit-button {
+    padding: 16px 18px;
+
+    font-size: 12px;
+  }
+
+  /* Coeurs */
+
+  .heart-1 {
+    top: 7%;
+
+    left: 2%;
+
+    font-size: 45px;
+  }
+
+  .heart-2 {
+    top: 38%;
+
+    right: 1%;
+
+    font-size: 28px;
+  }
+
+  .heart-3 {
+    bottom: 5%;
+
+    left: 3%;
+
+    font-size: 35px;
+  }
+
+}
+
+
+/* =========================================================
+   TRÈS PETITS ÉCRANS
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .create-container {
+    width: calc(100% - 20px);
+
+    padding-top: 30px;
+  }
+
+  .heading h1 {
+    font-size: 50px;
+  }
+
+  .heading p {
+    font-size: 11px;
+  }
+
+  .invitation-form {
+    padding: 20px 16px;
+  }
+
+  .step {
+    min-width: 55px;
+  }
+
+  .step small {
+    font-size: 6px;
+  }
+
+  .line {
+    max-width: 30px;
+  }
+}

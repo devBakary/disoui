@@ -1,0 +1,211 @@
+<div class="gestion-page">
+  <!-- =====================================================
+       DÉCORATIONS
+  ====================================================== -->
+
+  <div class="floating-heart heart-1">♡</div>
+  <div class="floating-heart heart-2">♥</div>
+  <div class="floating-heart heart-3">♡</div>
+  <div class="floating-heart heart-4">✦</div>
+
+  <!-- =====================================================
+       CHARGEMENT
+  ====================================================== -->
+
+  <div class="loading-container" *ngIf="loading">
+    <div class="loading-heart">❤️</div>
+
+    <p>Chargement de ton invitation...</p>
+  </div>
+
+  <!-- =====================================================
+       ERREUR / INVITATION INTROUVABLE
+  ====================================================== -->
+
+  <div class="not-found" *ngIf="!loading && error">
+    <div class="not-found-card">
+      <div class="not-found-icon">♡</div>
+
+      <p class="eyebrow">OUPS...</p>
+
+      <h2>
+        Cette invitation<br />
+        est introuvable.
+      </h2>
+
+      <p>Impossible de retrouver cette invitation.</p>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       CONTENU PRINCIPAL
+  ====================================================== -->
+
+  <main class="gestion-container" *ngIf="!loading && !error && invitation">
+    <!-- =================================================
+         EN-TÊTE
+    ================================================== -->
+
+    <div class="gestion-header">
+      <p class="eyebrow">MON INVITATION ❤️</p>
+
+      <h1>Bonjour {{ invitation.creatorName }}</h1>
+
+      <p class="header-subtitle">
+        Voici ce qu'il se passe avec ton invitation.
+      </p>
+    </div>
+
+    <!-- =================================================
+         STATUT — AUCUNE RÉPONSE
+    ================================================== -->
+
+    <section class="status-card waiting-card" *ngIf="!response">
+      <div class="status-icon">💌</div>
+
+      <div class="status-content">
+        <span class="status-label"> STATUT DE L'INVITATION </span>
+
+        <h2>En attente de réponse</h2>
+
+        <p>
+          Ton invitation a bien été envoyée à
+          <strong>{{ invitation.recipientName }}</strong
+          >.
+
+          <br />
+
+          Nous attendons maintenant sa réponse. ❤️
+        </p>
+      </div>
+
+      <div class="status-badge waiting">En attente</div>
+    </section>
+
+    <!-- =================================================
+         STATUT — RÉPONSE REÇUE
+    ================================================== -->
+
+    <section class="response-card" *ngIf="response">
+      <!-- =================================================
+           EN-TÊTE RÉPONSE
+      ================================================== -->
+
+      <div class="response-header">
+        <!-- OUI -->
+
+        <div class="response-icon yes" *ngIf="response.answer === 'yes'">
+          ❤️
+        </div>
+
+        <!-- NON -->
+
+        <div class="response-icon no" *ngIf="response.answer === 'no'">💗</div>
+
+        <p class="eyebrow">RÉPONSE REÇUE</p>
+
+        <h2 *ngIf="response.answer === 'no'">Une réponse est arrivée 💗</h2>
+      </div>
+
+      <!-- =================================================
+           RÉPONSE
+      ================================================== -->
+
+      <div class="answer-box">
+        <span class="answer-label"> SA RÉPONSE </span>
+
+        <strong class="answer-yes" *ngIf="response.answer === 'yes'">
+          Oui, avec plaisir ❤️
+        </strong>
+
+        <strong class="answer-no" *ngIf="response.answer === 'no'">
+          Je préfère pas 💗
+        </strong>
+      </div>
+
+      <!-- =================================================
+           INFORMATIONS DU RENDEZ-VOUS
+           UNIQUEMENT SI OUI
+      ================================================== -->
+
+      <div class="response-details" *ngIf="response.answer === 'yes'">
+        <!-- HEURE -->
+
+        <div class="response-detail" *ngIf="response.selectedTime">
+          <div class="response-detail-icon">🕐</div>
+
+          <div>
+            <span> HEURE CHOISIE </span>
+
+            <strong>
+              {{ response.selectedTime }}
+            </strong>
+          </div>
+        </div>
+
+        <!-- DATE -->
+
+        <div class="response-detail">
+          <div class="response-detail-icon">📅</div>
+
+          <div>
+            <span> DATE </span>
+
+            <strong>
+              {{ invitation.date | date: "d MMMM yyyy" }}
+            </strong>
+          </div>
+        </div>
+
+        <!-- LIEU -->
+
+        <div class="response-detail">
+          <div class="response-detail-icon">📍</div>
+
+          <div>
+            <span> LIEU </span>
+
+            <strong>
+              {{ invitation.location }}
+            </strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- =================================================
+           PETIT MOT
+      ================================================== -->
+
+      <div class="received-message" *ngIf="response.message">
+        <div class="message-title">
+          <span> 💌 </span>
+
+          <span> SON PETIT MOT </span>
+        </div>
+
+        <p>« {{ response.message }} »</p>
+      </div>
+
+      <!-- =================================================
+           DATE DE RÉPONSE
+      ================================================== -->
+
+      <div class="responded-date">
+        Réponse reçue le
+        {{ response.respondedAt | date: "d MMMM yyyy à HH:mm" }}
+      </div>
+    </section>
+
+    <!-- =================================================
+         PETIT MESSAGE FINAL
+    ================================================== -->
+
+    <div class="final-message">
+      <span>♡</span>
+
+      <p>Une petite invitation peut parfois créer un très joli moment. ❤️</p>
+
+      <span>♡</span>
+    </div>
+  </main>
+</div>

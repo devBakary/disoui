@@ -1,0 +1,972 @@
+/* =========================================================
+   PAGE DE PARTAGE
+========================================================= */
+
+.share-page {
+  min-height: 100vh;
+
+  position: relative;
+
+  overflow: hidden;
+
+  padding: 50px 20px 70px;
+
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(255, 207, 220, 0.45),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 90% 90%,
+      rgba(255, 220, 230, 0.5),
+      transparent 35%
+    ),
+    #fff8fa;
+
+  color: #4b2935;
+}
+
+
+
+/* =========================================================
+   DÉCORATIONS FLOTTANTES
+========================================================= */
+
+.floating-heart {
+  position: fixed;
+
+  z-index: 0;
+
+  pointer-events: none;
+  user-select: none;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  color: #c9788d;
+
+  opacity: 0.30;
+
+  animation: floating-heart 6s ease-in-out infinite;
+}
+
+
+.heart-1 {
+  top: 10%;
+  left: 5%;
+
+  font-size: 45px;
+
+  animation-delay: 0s;
+}
+
+
+.heart-2 {
+  top: 25%;
+  right: 6%;
+
+  font-size: 30px;
+
+  animation-delay: 1.5s;
+}
+
+
+.heart-3 {
+  bottom: 18%;
+  left: 8%;
+
+  font-size: 34px;
+
+  animation-delay: 3s;
+}
+
+
+.heart-4 {
+  right: 10%;
+  bottom: 8%;
+
+  font-size: 31px;
+
+  animation-delay: 4.5s;
+}
+
+
+@keyframes floating-heart {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-16px) rotate(6deg);
+  }
+
+}
+
+
+
+/* =========================================================
+   CONTENEUR
+========================================================= */
+
+.share-container {
+  position: relative;
+
+  z-index: 1;
+
+  width: 100%;
+
+  max-width: 650px;
+
+  margin: 0 auto;
+}
+
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.share-label {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  margin-bottom: 25px;
+
+  color: #b56d81;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 3px;
+
+  text-align: center;
+}
+
+
+.share-label span {
+  font-size: 16px;
+
+  color: #cc8195;
+}
+
+
+
+/* =========================================================
+   CARTE PRINCIPALE
+========================================================= */
+
+.share-card {
+  position: relative;
+
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  border: 1px solid rgba(195, 120, 140, 0.18);
+
+  border-radius: 28px;
+
+  box-shadow:
+    0 25px 70px rgba(100, 48, 65, 0.11),
+    0 5px 20px rgba(100, 48, 65, 0.05);
+}
+
+
+
+/* =========================================================
+   DÉCORATIONS CARTE
+========================================================= */
+
+.card-decoration {
+  position: absolute;
+
+  z-index: 0;
+
+  pointer-events: none;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 70px;
+
+  line-height: 1;
+
+  color: rgba(190, 105, 129, 0.14);
+}
+
+
+.card-decoration.top {
+  top: 12px;
+
+  left: 22px;
+}
+
+
+.card-decoration.bottom {
+  right: 22px;
+
+  bottom: 8px;
+
+  transform: rotate(180deg);
+}
+
+
+
+/* =========================================================
+   CONTENU
+========================================================= */
+
+.share-content {
+  position: relative;
+
+  z-index: 1;
+
+  padding: 48px 45px 45px;
+
+  text-align: center;
+}
+
+
+
+/* =========================================================
+   ICÔNE DE SUCCÈS
+========================================================= */
+
+.success-icon {
+  width: 78px;
+  height: 78px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 20px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      #fff1f5,
+      #fce3ea
+    );
+
+  color: #bd627b;
+
+  font-family: Georgia, serif;
+
+  font-size: 38px;
+
+  box-shadow:
+    0 10px 30px rgba(190, 100, 125, 0.12);
+
+  animation: success-pulse 2.5s ease-in-out infinite;
+}
+
+
+@keyframes success-pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+}
+
+
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
+.eyebrow {
+  margin: 0 0 12px;
+
+  color: #b66d82;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 2.7px;
+
+  text-transform: uppercase;
+}
+
+
+
+/* =========================================================
+   TITRE
+========================================================= */
+
+.share-content h1 {
+  margin: 0;
+
+  color: #542b38;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(34px, 6vw, 46px);
+
+  font-weight: 500;
+
+  line-height: 1.18;
+}
+
+
+
+/* =========================================================
+   ORNEMENT
+========================================================= */
+
+.ornament {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  margin: 22px 0;
+}
+
+
+.ornament span {
+  width: 65px;
+
+  height: 1px;
+
+  background: linear-gradient(
+    to right,
+    transparent,
+    #d99baa
+  );
+}
+
+
+.ornament span:last-child {
+  background: linear-gradient(
+    to left,
+    transparent,
+    #d99baa
+  );
+}
+
+
+.ornament {
+  color: #c4778c;
+
+  font-family: Georgia, serif;
+
+  font-size: 18px;
+}
+
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.description {
+  max-width: 520px;
+
+  margin: 0 auto 27px;
+
+  color: #856571;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 15px;
+
+  line-height: 1.8;
+}
+
+
+
+/* =========================================================
+   BOÎTE DU LIEN
+========================================================= */
+
+.link-box {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 15px 17px;
+
+  margin-bottom: 12px;
+
+  box-sizing: border-box;
+
+  background: #fff7f9;
+
+  border: 1px solid #f0d6de;
+
+  border-radius: 14px;
+
+  text-align: left;
+}
+
+
+.link-icon {
+  width: 36px;
+  height: 36px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #fce7ed;
+
+  font-size: 16px;
+}
+
+
+.link-text {
+  min-width: 0;
+
+  overflow: hidden;
+
+  color: #77505c;
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+}
+
+
+
+/* =========================================================
+   BOUTON COPIER
+========================================================= */
+
+.copy-button {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  padding: 15px 20px;
+
+  border: 1px solid #ead2da;
+
+  border-radius: 14px;
+
+  background: white;
+
+  color: #714654;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.copy-button:hover {
+  transform: translateY(-2px);
+
+  background: #fff8fa;
+
+  border-color: #dba8b7;
+
+  box-shadow:
+    0 8px 20px rgba(110, 53, 70, 0.07);
+}
+
+
+.copy-button:active {
+  transform: translateY(0);
+}
+
+
+.button-icon {
+  font-size: 16px;
+}
+
+
+
+/* =========================================================
+   BOUTON WHATSAPP
+========================================================= */
+
+.whatsapp-button {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 16px 20px;
+
+  margin-top: 12px;
+
+  border: none;
+
+  border-radius: 14px;
+
+  background: #25d366;
+
+  color: #ffffff;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 9px 22px rgba(37, 211, 102, 0.20);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+
+.whatsapp-button:hover {
+  transform: translateY(-2px);
+
+  filter: brightness(0.97);
+
+  box-shadow:
+    0 13px 28px rgba(37, 211, 102, 0.28);
+}
+
+
+.whatsapp-button:active {
+  transform: translateY(0);
+
+  box-shadow:
+    0 5px 12px rgba(37, 211, 102, 0.18);
+}
+
+
+
+/* =========================================================
+   LOGO WHATSAPP
+========================================================= */
+
+.whatsapp-logo {
+  width: 23px;
+
+  height: 23px;
+
+  flex-shrink: 0;
+
+  color: white;
+}
+
+
+.whatsapp-button span:not(.arrow) {
+  line-height: 1;
+}
+
+
+.whatsapp-button .arrow {
+  margin-left: auto;
+
+  font-size: 19px;
+
+  transition: transform 0.2s ease;
+}
+
+
+.whatsapp-button:hover .arrow {
+  transform: translateX(4px);
+}
+
+
+
+/* =========================================================
+   SÉPARATEUR
+========================================================= */
+
+.separator {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  margin: 25px 0 18px;
+
+  color: #b18b96;
+
+  font-family: Georgia, serif;
+
+  font-size: 12px;
+
+  font-style: italic;
+}
+
+
+.separator span {
+  flex: 1;
+
+  height: 1px;
+
+  background: #eedde2;
+}
+
+
+
+/* =========================================================
+   GÉRER MON INVITATION
+========================================================= */
+
+.manage-button {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  padding: 15px 20px;
+
+  border: 1px solid #ead0d8;
+
+  border-radius: 14px;
+
+  background: #fffafb;
+
+  color: #6d3f4d;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.manage-button:hover {
+  transform: translateY(-2px);
+
+  background: #fff2f6;
+
+  border-color: #dca5b5;
+
+  box-shadow:
+    0 8px 20px rgba(110, 53, 70, 0.07);
+}
+
+
+.manage-button:active {
+  transform: translateY(0);
+}
+
+
+.manage-icon {
+  width: 31px;
+  height: 31px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #f9e5eb;
+
+  color: #a95e73;
+
+  font-size: 15px;
+}
+
+
+.manage-arrow {
+  margin-left: auto;
+
+  color: #b06d81;
+
+  font-size: 18px;
+
+  transition: transform 0.2s ease;
+}
+
+
+.manage-button:hover .manage-arrow {
+  transform: translateX(4px);
+}
+
+
+
+/* =========================================================
+   PRIVACY
+========================================================= */
+
+.privacy {
+  margin: 20px 0 0;
+
+  color: #aa8993;
+
+  font-size: 11px;
+
+  line-height: 1.9;
+
+  text-align: center;
+}
+
+
+
+/* =========================================================
+   BOUTON RETOUR
+========================================================= */
+
+.back-button {
+  display: block;
+
+  margin: 25px auto 0;
+
+  padding: 10px 15px;
+
+  border: none;
+
+  background: transparent;
+
+  color: #9b6877;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.back-button:hover {
+  color: #713f4d;
+
+  transform: translateX(-3px);
+}
+
+
+
+/* =========================================================
+   RESPONSIVE — TABLETTE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .share-page {
+    padding: 35px 15px 50px;
+  }
+
+
+  .share-content {
+    padding: 40px 30px;
+  }
+
+
+  .share-content h1 {
+    font-size: 38px;
+  }
+
+
+  .description {
+    font-size: 14px;
+  }
+
+}
+
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 520px) {
+
+  .share-page {
+    padding: 25px 12px 40px;
+  }
+
+
+  .share-label {
+    margin-bottom: 18px;
+
+    gap: 8px;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+  }
+
+
+  .share-card {
+    border-radius: 22px;
+  }
+
+
+  .share-content {
+    padding: 32px 18px 30px;
+  }
+
+
+  .success-icon {
+    width: 68px;
+    height: 68px;
+
+    margin-bottom: 17px;
+
+    font-size: 32px;
+  }
+
+
+  .eyebrow {
+    font-size: 9px;
+
+    letter-spacing: 2px;
+  }
+
+
+  .share-content h1 {
+    font-size: 31px;
+  }
+
+
+  .ornament {
+    margin: 18px 0;
+  }
+
+
+  .ornament span {
+    width: 45px;
+  }
+
+
+  .description {
+    margin-bottom: 22px;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+  }
+
+
+  .link-box {
+    padding: 13px;
+
+    gap: 9px;
+  }
+
+
+  .link-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+
+  .link-text {
+    font-size: 11px;
+  }
+
+
+  .copy-button,
+  .whatsapp-button,
+  .manage-button {
+    padding: 14px 15px;
+
+    font-size: 13px;
+  }
+
+
+  .whatsapp-logo {
+    width: 21px;
+    height: 21px;
+  }
+
+
+  .card-decoration {
+    font-size: 55px;
+  }
+
+
+  .floating-heart {
+    opacity: 0.18;
+  }
+
+}
+
+
+
+/* =========================================================
+   TRÈS PETITS ÉCRANS
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .share-content {
+    padding: 28px 14px;
+  }
+
+
+  .share-content h1 {
+    font-size: 28px;
+  }
+
+
+  .description {
+    font-size: 13px;
+  }
+
+
+  .link-text {
+    font-size: 10px;
+  }
+
+}
