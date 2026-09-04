@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -61,6 +62,13 @@ export class ReponseComponent implements OnInit {
 
 
   // =========================================================
+  // CHARGEMENT
+  // =========================================================
+
+  isLoading = true;
+
+
+  // =========================================================
   // RÉPONSE EXISTANTE
   // =========================================================
 
@@ -78,9 +86,12 @@ export class ReponseComponent implements OnInit {
   responseSent = false;
 
 
+  // =========================================================
+  // CONSTRUCTEUR
+  // =========================================================
+
   constructor(
     private route: ActivatedRoute,
-
     private invitationService: InvitationService
   ) {}
 
@@ -91,11 +102,40 @@ export class ReponseComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
 
+    // -------------------------------------------------------
+    // Initialiser l'état
+    // -------------------------------------------------------
+
+    this.isLoading = true;
+
+    this.invitation = null;
+
+    this.responseAlreadySent = false;
+
+    this.existingResponse = null;
+
+    this.responseSent = false;
+
+
+    // -------------------------------------------------------
+    // Récupérer l'ID dans l'URL
+    // -------------------------------------------------------
+
     const id =
       this.route.snapshot.paramMap.get('id');
 
 
+    // -------------------------------------------------------
+    // Aucun ID
+    // -------------------------------------------------------
+
     if (!id) {
+
+      console.error(
+        'Aucun identifiant d’invitation dans l’URL.'
+      );
+
+      this.isLoading = false;
 
       return;
 
@@ -104,24 +144,49 @@ export class ReponseComponent implements OnInit {
 
     try {
 
-      // -------------------------------------------------------
+      // =====================================================
       // 1. RÉCUPÉRER L'INVITATION
-      // -------------------------------------------------------
+      // =====================================================
 
-      this.invitation =
+      const invitation =
         await this.invitationService
           .getInvitationById(id);
 
 
       console.log(
         'Invitation récupérée depuis Firestore :',
-        this.invitation
+        invitation
       );
 
 
       // -------------------------------------------------------
-      // 2. VÉRIFIER SI UNE RÉPONSE EXISTE DÉJÀ
+      // Invitation inexistante
       // -------------------------------------------------------
+
+      if (!invitation) {
+
+        console.warn(
+          'Invitation introuvable :',
+          id
+        );
+
+        this.invitation = null;
+
+        return;
+
+      }
+
+
+      // -------------------------------------------------------
+      // Invitation trouvée
+      // -------------------------------------------------------
+
+      this.invitation = invitation;
+
+
+      // =====================================================
+      // 2. VÉRIFIER SI UNE RÉPONSE EXISTE DÉJÀ
+      // =====================================================
 
       const existingResponse =
         await this.invitationService
@@ -151,18 +216,27 @@ export class ReponseComponent implements OnInit {
         error
       );
 
+      this.invitation = null;
+
+    } finally {
+
+      // =====================================================
+      // FIN DU CHARGEMENT
+      // =====================================================
+
+      this.isLoading = false;
+
     }
 
   }
 
 
   // =========================================================
-  // ÉTAPE 1
+  // ÉTAPE 1 — OUI
   // =========================================================
 
   chooseYes(): void {
 
-    // Sécurité supplémentaire
     if (this.responseAlreadySent) {
       return;
     }
@@ -174,9 +248,12 @@ export class ReponseComponent implements OnInit {
   }
 
 
+  // =========================================================
+  // ÉTAPE 1 — NON
+  // =========================================================
+
   chooseNo(): void {
 
-    // Sécurité supplémentaire
     if (this.responseAlreadySent) {
       return;
     }
@@ -204,15 +281,13 @@ export class ReponseComponent implements OnInit {
 
 
   // =========================================================
-  // ÉTAPE 3
+  // ÉTAPE 3 — HORAIRES
   // =========================================================
 
   getAvailableTimes(): string[] {
 
     if (!this.invitation) {
-
       return [];
-
     }
 
 
@@ -234,6 +309,10 @@ export class ReponseComponent implements OnInit {
   }
 
 
+  // =========================================================
+  // CHOISIR UNE HEURE
+  // =========================================================
+
   chooseTime(
     time: string
   ): void {
@@ -247,19 +326,19 @@ export class ReponseComponent implements OnInit {
   }
 
 
+  // =========================================================
+  // CONTINUER VERS CONFIRMATION
+  // =========================================================
+
   continueToConfirmation(): void {
 
     if (this.responseAlreadySent) {
-
       return;
-
     }
 
 
     if (!this.selectedTime) {
-
       return;
-
     }
 
 
@@ -289,14 +368,14 @@ export class ReponseComponent implements OnInit {
 
 
   // =========================================================
-  // ENVOI DE LA RÉPONSE
+  // ENVOYER LA RÉPONSE
   // =========================================================
 
   async sendResponse(): Promise<void> {
 
 
     // -------------------------------------------------------
-    // SÉCURITÉ : UNE RÉPONSE EXISTE DÉJÀ
+    // Une réponse existe déjà
     // -------------------------------------------------------
 
     if (this.responseAlreadySent) {
@@ -310,33 +389,55 @@ export class ReponseComponent implements OnInit {
     }
 
 
+    // -------------------------------------------------------
+    // Récupérer l'ID
+    // -------------------------------------------------------
+
     const invitationId =
       this.route.snapshot.paramMap.get('id');
 
 
     if (!invitationId) {
 
+      console.error(
+        'ID de l’invitation manquant.'
+      );
+
       return;
 
     }
 
+
+    // -------------------------------------------------------
+    // Vérifier la réponse
+    // -------------------------------------------------------
 
     if (!this.answer) {
 
+      console.error(
+        'Aucune réponse sélectionnée.'
+      );
+
       return;
 
     }
 
 
+    // -------------------------------------------------------
+    // Empêcher le double clic
+    // -------------------------------------------------------
+
     if (this.isSending) {
-
       return;
-
     }
 
 
     this.isSending = true;
 
+
+    // -------------------------------------------------------
+    // Préparer la réponse
+    // -------------------------------------------------------
 
     const response: InvitationResponse = {
 
@@ -354,7 +455,7 @@ export class ReponseComponent implements OnInit {
 
       message:
 
-        this.responseMessage,
+        this.responseMessage.trim(),
 
       respondedAt:
 
@@ -365,9 +466,34 @@ export class ReponseComponent implements OnInit {
 
     try {
 
+      // =====================================================
+      // ENREGISTRER DANS FIRESTORE
+      // =====================================================
 
       await this.invitationService
         .saveResponse(response);
+
+
+      console.log(
+        'Réponse enregistrée dans Firestore :',
+        response
+      );
+
+
+      // =====================================================
+      // METTRE À JOUR L'INTERFACE
+      // =====================================================
+
+      this.existingResponse =
+        response;
+
+
+      this.responseSent =
+        true;
+
+
+      this.responseAlreadySent =
+        true;
 
 
       console.log(
@@ -376,24 +502,7 @@ export class ReponseComponent implements OnInit {
       );
 
 
-      // -----------------------------------------------------
-      // CONSERVER LA RÉPONSE
-      // -----------------------------------------------------
-
-      this.existingResponse =
-        response;
-
-
-      this.responseAlreadySent =
-        true;
-
-
-      this.responseSent =
-        true;
-
-
     } catch (error) {
-
 
       console.error(
         'Erreur lors de l’enregistrement de la réponse :',
@@ -403,7 +512,8 @@ export class ReponseComponent implements OnInit {
 
     } finally {
 
-      this.isSending = false;
+      this.isSending =
+        false;
 
     }
 

@@ -1,3 +1,4 @@
+
 <div class="response-page">
 
   <!-- =====================================================
@@ -11,14 +12,33 @@
 
 
   <!-- =====================================================
+       CHARGEMENT
+  ====================================================== -->
+
+  <div
+    class="loading-container"
+    *ngIf="isLoading"
+  >
+
+    <div class="loading-heart">
+      ❤️
+    </div>
+
+    <p>
+      Un petit instant...
+    </p>
+
+  </div>
+
+
+  <!-- =====================================================
        INVITATION — RÉPONSE PAS ENCORE ENVOYÉE
   ====================================================== -->
 
   <main
     class="response-container"
-    *ngIf="invitation && !responseAlreadySent"
+    *ngIf="!isLoading && invitation && !responseAlreadySent"
   >
-
 
     <!-- =================================================
          INDICATEUR DES ÉTAPES
@@ -111,7 +131,6 @@
       </div>
 
     </div>
-
 
 
     <!-- =================================================
@@ -245,9 +264,7 @@
         </p>
 
 
-        <!-- =================================================
-             ACTIVITÉ
-        ================================================== -->
+        <!-- ACTIVITÉ -->
 
         <div class="proposal-card">
 
@@ -270,9 +287,7 @@
         </div>
 
 
-        <!-- =================================================
-             LIEU
-        ================================================== -->
+        <!-- LIEU -->
 
         <div class="proposal-card">
 
@@ -355,9 +370,7 @@
         </h2>
 
 
-        <!-- =================================================
-             DATE
-        ================================================== -->
+        <!-- DATE -->
 
         <div class="date-card">
 
@@ -372,7 +385,7 @@
             </span>
 
             <strong>
-              {{ invitation.date | date:'EEEE d MMMM yyyy' }}
+              {{ invitation.date | date: "EEEE d MMMM yyyy" }}
             </strong>
 
           </div>
@@ -380,18 +393,14 @@
         </div>
 
 
-        <!-- =================================================
-             QUESTION HEURE
-        ================================================== -->
+        <!-- QUESTION HEURE -->
 
         <p class="time-question">
           Quelle heure te convient le mieux ? ❤️
         </p>
 
 
-        <!-- =================================================
-             HORAIRES DISPONIBLES
-        ================================================== -->
+        <!-- HORAIRES -->
 
         <div class="time-options">
 
@@ -425,9 +434,7 @@
         </div>
 
 
-        <!-- =================================================
-             NAVIGATION
-        ================================================== -->
+        <!-- NAVIGATION -->
 
         <div class="navigation-buttons">
 
@@ -472,9 +479,8 @@
         *ngIf="currentStep === 4"
       >
 
-
         <!-- =================================================
-             RÉPONSE DÉJÀ ENVOYÉE
+             RÉPONSE ENVOYÉE
         ================================================== -->
 
         <ng-container *ngIf="responseSent">
@@ -516,16 +522,12 @@
           </p>
 
 
-          <!-- =================================================
-               RÉSUMÉ SI OUI
-          ================================================== -->
+          <!-- RÉSUMÉ SI OUI -->
 
           <div
             class="response-summary"
             *ngIf="answer === 'yes'"
           >
-
-            <!-- ACTIVITÉ -->
 
             <div class="summary-item">
 
@@ -540,8 +542,6 @@
             </div>
 
 
-            <!-- LIEU -->
-
             <div class="summary-item">
 
               <span>
@@ -555,8 +555,6 @@
             </div>
 
 
-            <!-- DATE -->
-
             <div class="summary-item">
 
               <span>
@@ -564,13 +562,11 @@
               </span>
 
               <strong>
-                {{ invitation.date | date:'d MMMM yyyy' }}
+                {{ invitation.date | date: "d MMMM yyyy" }}
               </strong>
 
             </div>
 
-
-            <!-- HEURE -->
 
             <div class="summary-item">
 
@@ -588,9 +584,7 @@
 
 
           <p class="confirmation-love">
-
             ❤️ À très bientôt ❤️
-
           </p>
 
         </ng-container>
@@ -631,14 +625,9 @@
           </p>
 
 
-          <!-- =================================================
-               RÉSUMÉ
-          ================================================== -->
+          <!-- RÉSUMÉ -->
 
           <div class="response-summary">
-
-
-            <!-- ACTIVITÉ -->
 
             <div class="summary-item">
 
@@ -653,8 +642,6 @@
             </div>
 
 
-            <!-- LIEU -->
-
             <div class="summary-item">
 
               <span>
@@ -668,8 +655,6 @@
             </div>
 
 
-            <!-- DATE -->
-
             <div class="summary-item">
 
               <span>
@@ -677,13 +662,11 @@
               </span>
 
               <strong>
-                {{ invitation.date | date:'d MMMM yyyy' }}
+                {{ invitation.date | date: "d MMMM yyyy" }}
               </strong>
 
             </div>
 
-
-            <!-- HEURE -->
 
             <div class="summary-item">
 
@@ -700,9 +683,7 @@
           </div>
 
 
-          <!-- =================================================
-               PETIT MOT
-          ================================================== -->
+          <!-- PETIT MOT -->
 
           <div class="message-section">
 
@@ -725,9 +706,7 @@
           </div>
 
 
-          <!-- =================================================
-               CONFIRMER
-          ================================================== -->
+          <!-- CONFIRMER -->
 
           <button
             type="button"
@@ -793,9 +772,7 @@
           </p>
 
 
-          <!-- =================================================
-               PETIT MOT
-          ================================================== -->
+          <!-- PETIT MOT -->
 
           <div class="message-section">
 
@@ -818,9 +795,7 @@
           </div>
 
 
-          <!-- =================================================
-               ENVOYER
-          ================================================== -->
+          <!-- ENVOYER -->
 
           <button
             type="button"
@@ -860,15 +835,12 @@
 
   <main
     class="response-container already-answered"
-    *ngIf="invitation && responseAlreadySent"
+    *ngIf="!isLoading && invitation && responseAlreadySent"
   >
 
     <div class="response-card">
 
-
-      <!-- =================================================
-           ICÔNE
-      ================================================== -->
+      <!-- ICÔNE -->
 
       <div
         class="confirmation-heart"
@@ -886,9 +858,7 @@
       </div>
 
 
-      <!-- =================================================
-           TITRE
-      ================================================== -->
+      <!-- TITRE -->
 
       <p class="eyebrow">
         C'EST DÉJÀ ENVOYÉ
@@ -922,19 +892,14 @@
       </p>
 
 
-      <!-- =================================================
-           RÉSUMÉ DE LA RÉPONSE
-      ================================================== -->
+      <!-- RÉSUMÉ -->
 
       <div
         class="response-summary"
         *ngIf="existingResponse"
       >
 
-
-        <!-- =================================================
-             RÉPONSE
-        ================================================== -->
+        <!-- RÉPONSE -->
 
         <div class="summary-item">
 
@@ -942,24 +907,19 @@
             TA RÉPONSE
           </span>
 
-
           <strong>
 
             <ng-container
               *ngIf="existingResponse.answer === 'yes'"
             >
-
               Oui, avec plaisir ❤️
-
             </ng-container>
 
 
             <ng-container
               *ngIf="existingResponse.answer === 'no'"
             >
-
               Je préfère pas 💗
-
             </ng-container>
 
           </strong>
@@ -967,9 +927,7 @@
         </div>
 
 
-        <!-- =================================================
-             ACTIVITÉ — SI OUI
-        ================================================== -->
+        <!-- ACTIVITÉ -->
 
         <div
           class="summary-item"
@@ -987,9 +945,7 @@
         </div>
 
 
-        <!-- =================================================
-             LIEU — SI OUI
-        ================================================== -->
+        <!-- LIEU -->
 
         <div
           class="summary-item"
@@ -1007,9 +963,7 @@
         </div>
 
 
-        <!-- =================================================
-             DATE — SI OUI
-        ================================================== -->
+        <!-- DATE -->
 
         <div
           class="summary-item"
@@ -1021,21 +975,19 @@
           </span>
 
           <strong>
-            {{ invitation.date | date:'d MMMM yyyy' }}
+            {{ invitation.date | date: "d MMMM yyyy" }}
           </strong>
 
         </div>
 
 
-        <!-- =================================================
-             HEURE — SI OUI
-        ================================================== -->
+        <!-- HEURE -->
 
         <div
           class="summary-item"
           *ngIf="
-            existingResponse.answer === 'yes' &&
-            existingResponse.selectedTime
+            existingResponse.answer === 'yes'
+            && existingResponse.selectedTime
           "
         >
 
@@ -1050,9 +1002,7 @@
         </div>
 
 
-        <!-- =================================================
-             PETIT MOT
-        ================================================== -->
+        <!-- PETIT MOT -->
 
         <div
           class="summary-item"
@@ -1072,9 +1022,7 @@
       </div>
 
 
-      <!-- =================================================
-           MESSAGE FINAL
-      ================================================== -->
+      <!-- MESSAGE FINAL -->
 
       <p class="confirmation-love">
 
@@ -1094,7 +1042,7 @@
 
   <div
     class="not-found"
-    *ngIf="!invitation"
+    *ngIf="!isLoading && !invitation"
   >
 
     <div class="not-found-card">

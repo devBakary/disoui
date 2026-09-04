@@ -807,7 +807,12 @@ input[type="time"] {
 
     padding: 14px;
   }
-
+.dat {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+}
   /* Horaires */
 
   .time-grid {
